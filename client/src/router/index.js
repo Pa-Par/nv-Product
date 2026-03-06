@@ -1,15 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import UserCreate from '../components/Users/CreateUser.vue'
-import UserEdit from '../components/Users/EditUser.vue'
-import UserShow from '../components/Users/ShowUser.vue'
-import UserIndex from '../components/Users/Index.vue'
-import Login from '../components/Login.vue'
-
-import BlogIndex from '../components/Blogs/Index.vue'
-import BlogCreate from '../components/Blogs/CreateBlog.vue'
-import BlogEdit from '../components/Blogs/EditBlog.vue'
-import BlogShow from '../components/Blogs/ShowBlog.vue'
-
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,53 +6,39 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/HomeView.vue'),
-    },
-    {
-      path: '/users',
-      name: 'users',
-      component: UserIndex
-    },
-    {
-      path: '/user/create',
-      name: 'users-create',
-      component: UserCreate
-    },
-    {
-      path: '/user/edit/:userId',
-      name: 'user-edit',
-      component: UserEdit
-    },
-    {
-      path: '/user/:userId',
-      name: 'user',
-      component: UserShow
+      component: () => import('../views/HomeView.vue')
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: () => import('../components/Login.vue')
     },
     {
-      path: '/blogs',
-      name: 'blogs',
-      component: BlogIndex
+      path: '/users',
+      name: 'users',
+      component: () => import('../components/Users/Index.vue')
+    },
+    // --- แก้ไขจุดนี้: เพิ่ม 'blogs' กลับเข้ามาเพื่อป้องกันหน้าจอขาว (Crash) ---
+    {
+      path: '/products',
+      name: 'products',
+      component: () => import('../components/Products/Index.vue')
     },
     {
-      path: '/blog/create',
-      name: 'blogs-create',
-      component: BlogCreate
+      path: '/product/create',
+      name: 'products-create',
+      component: () => import('../components/Products/CreateProduct.vue')
     },
     {
-      path: '/blog/edit/:blogId',
-      name: 'blog-edit',
-      component: BlogEdit
+      path: '/product/edit/:productId',
+      name: 'product-edit',
+      component: () => import('../components/Products/EditProduct.vue')
     },
     {
-      path: '/blog/:blogId',
-      name: 'blog',
-      component: BlogShow
-    },
+      path: '/product/:productId',
+      name: 'product',
+      component: () => import('../components/Products/ShowProduct.vue')
+    }
   ]
 })
 
