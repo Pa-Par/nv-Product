@@ -10,6 +10,12 @@
         <label class="form-label">Price:</label>
         <input type="number" v-model="product.price" class="form-control">
       </div>
+      
+      <div class="mb-3">
+        <label class="form-label">Stock:</label>
+        <input type="number" v-model="product.stock" class="form-control">
+      </div>
+
       <p>
         <button type="submit" class="btn btn-warning">Update Product</button>
         <button type="button" class="btn btn-secondary" v-on:click="navigateTo('/products')">กลับ</button>
@@ -24,6 +30,7 @@ import ProductsService from '../../services/ProductsService'
 export default {
   data() {
     return {
+      // ตรวจสอบว่ามีฟิลด์ stock ใน object product แล้ว
       product: { name: '', description: '', price: 0, stock: 0 }
     }
   },
@@ -44,7 +51,9 @@ export default {
         console.log(err)
       }
     },
-    navigateTo(route) { this.$router.push(route) }
+    navigateTo(route) { 
+      this.$router.push(route) 
+    }
   }
 }
 </script>
