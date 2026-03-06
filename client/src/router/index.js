@@ -1,16 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 import UserCreate from '../components/Users/CreateUser.vue'
 import UserEdit from '../components/Users/EditUser.vue'
 import UserShow from '../components/Users/ShowUser.vue'
 import UserIndex from '../components/Users/Index.vue'
-
 import Login from '../components/Login.vue'
 
-import ProductIndex from '../components/Products/Index.vue'
-import ProductCreate from '../components/Products/CreateProduct.vue'
-import ProductEdit from '../components/Products/EditProduct.vue'
-import ProductShow from '../components/Products/ShowProduct.vue'
+import BlogIndex from '../components/Blogs/Index.vue'
+import BlogCreate from '../components/Blogs/CreateBlog.vue'
+import BlogEdit from '../components/Blogs/EditBlog.vue'
+import BlogShow from '../components/Blogs/ShowBlog.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,7 +19,6 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/HomeView.vue'),
     },
-
     {
       path: '/users',
       name: 'users',
@@ -41,33 +39,31 @@ const router = createRouter({
       name: 'user',
       component: UserShow
     },
-
     {
       path: '/login',
       name: 'login',
       component: Login
     },
-
     {
-      path: '/products',
-      name: 'products',
-      component: ProductIndex
+      path: '/blogs',
+      name: 'blogs',
+      component: BlogIndex
     },
     {
-      path: '/product/create',
-      name: 'product-create',
-      component: ProductCreate
+      path: '/blog/create',
+      name: 'blogs-create',
+      component: BlogCreate
     },
     {
-      path: '/product/edit/:productId',
-      name: 'product-edit',
-      component: ProductEdit
+      path: '/blog/edit/:blogId',
+      name: 'blog-edit',
+      component: BlogEdit
     },
     {
-      path: '/product/:productId',
-      name: 'product',
-      component: ProductShow
-    }
+      path: '/blog/:blogId',
+      name: 'blog',
+      component: BlogShow
+    },
   ]
 })
 
